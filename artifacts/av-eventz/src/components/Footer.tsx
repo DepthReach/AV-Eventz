@@ -1,76 +1,68 @@
-import { Instagram, Facebook, Linkedin, Youtube, ArrowUp } from 'lucide-react';
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-[#0a0a0a] pt-20 pb-8 border-t border-primary/20">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
-          {/* Brand Col */}
-          <div className="lg:col-span-2">
-            <h2 className="text-3xl font-serif text-primary tracking-wider font-bold mb-2">
-              AV Eventz
-            </h2>
-            <p className="text-muted-foreground text-sm font-light mb-8 max-w-sm">
-              Creating Experiences. Building Memories. Delivering Excellence. A premium corporate event management company serving India.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <Youtube size={18} />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-foreground font-serif text-xl mb-6">Quick Links</h4>
-            <ul className="space-y-4">
-              <li><a href="#about" className="text-muted-foreground hover:text-primary transition-colors text-sm">About Us</a></li>
-              <li><a href="#portfolio" className="text-muted-foreground hover:text-primary transition-colors text-sm">Portfolio</a></li>
-              <li><a href="#testimonials" className="text-muted-foreground hover:text-primary transition-colors text-sm">Client Testimonials</a></li>
-              <li><a href="#contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">Contact Us</a></li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-foreground font-serif text-xl mb-6">Services</h4>
-            <ul className="space-y-4">
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors text-sm">Corporate Events</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors text-sm">Conferences</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors text-sm">Product Launches</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors text-sm">Award Nights</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="pt-8 border-t border-primary/20 flex flex-col md:flex-row items-center justify-between gap-4 relative">
-          <p className="text-muted-foreground text-xs font-light">
-            © {new Date().getFullYear()} AV Eventz — A Brand of AV Enterprise. All rights reserved.
+    <footer className="bg-[#0a0a0a] border-t border-primary/20 pt-20 pb-8 px-6 md:px-12">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div>
+          <h2 className="font-serif text-primary text-2xl mb-4">AV Eventz</h2>
+          <p className="font-sans text-[13px] text-muted-foreground leading-relaxed">
+            Creating Experiences. Building Memories. Delivering Excellence.
           </p>
-          
-          <button 
-            onClick={scrollToTop}
-            className="w-10 h-10 bg-card border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors absolute -top-5 right-0 md:relative md:top-0"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp size={18} />
-          </button>
         </div>
+
+        <div>
+          <h3 className="font-sans text-sm uppercase tracking-widest text-foreground mb-6">Quick Links</h3>
+          <ul className="space-y-3">
+            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+              <li key={item}>
+                <a href={`#${item.toLowerCase()}`} className="text-muted-foreground hover:text-primary text-[14px] transition-colors">
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-sans text-sm uppercase tracking-widest text-foreground mb-6">Services</h3>
+          <ul className="space-y-3">
+            {['Corporate Events', 'Conferences', 'Product Launches', 'Award Nights', 'AV & Technical'].map((item) => (
+              <li key={item} className="text-muted-foreground text-[14px]">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-sans text-sm uppercase tracking-widest text-foreground mb-6">Contact</h3>
+          <ul className="space-y-3 text-[14px] text-muted-foreground mb-6">
+            <li><a href="tel:+919466227355" className="hover:text-primary transition-colors">+91 94662 27355</a></li>
+            <li><a href="mailto:avevent@zoho.in" className="hover:text-primary transition-colors">avevent@zoho.in</a></li>
+            <li className="leading-relaxed">B-07/2, HUDA Market,<br/>Opp. Nehru College, Sector-16,<br/>Faridabad, Haryana</li>
+          </ul>
+          <div className="flex gap-4">
+            <a href="#" className="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all">
+              <FaInstagram className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all">
+              <FaFacebookF className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all">
+              <FaLinkedinIn className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all">
+              <FaYoutube className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto text-center border-t border-white/5 pt-8">
+        <p className="text-[12px] text-muted-foreground font-sans">
+          © {new Date().getFullYear()} AV Eventz — A Brand of AV Enterprise. All rights reserved.
+        </p>
       </div>
     </footer>
   );

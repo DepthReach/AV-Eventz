@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -57,36 +57,36 @@
   --elevate-1: rgba(255, 255, 255, 0.04);
   --elevate-2: rgba(255, 255, 255, 0.09);
 
-  /* Dark Luxury Theme */
+  /* Dark Luxury Theme - AV Eventz */
   --background: 0 0% 7%; /* #111111 */
-  --foreground: 40 23% 97%; /* #F8F6F2 */
+  --foreground: 40 33% 96%; /* #F8F6F2 */
   
-  --border: 44 20% 20%;
-  --card: 0 0% 9%;
-  --card-foreground: 40 23% 97%;
-  --card-border: 44 20% 20%;
+  --border: 0 0% 18%;
+  --card: 0 0% 10%;
+  --card-foreground: 40 33% 96%;
+  --card-border: 0 0% 18%;
 
-  --popover: 0 0% 9%;
-  --popover-foreground: 40 23% 97%;
-  --popover-border: 44 20% 20%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 40 33% 96%;
+  --popover-border: 0 0% 18%;
 
-  --primary: 44 54% 54%; /* #C9A84C */
+  --primary: 40 47% 55%; /* Soft gold #C9A84C */
   --primary-foreground: 0 0% 7%;
   
   --secondary: 0 0% 15%;
-  --secondary-foreground: 40 23% 97%;
+  --secondary-foreground: 40 33% 96%;
   
   --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 65%;
+  --muted-foreground: 40 10% 60%;
   
-  --accent: 44 54% 54%;
+  --accent: 40 47% 55%;
   --accent-foreground: 0 0% 7%;
   
   --destructive: 0 62% 30%;
-  --destructive-foreground: 40 23% 97%;
+  --destructive-foreground: 40 33% 96%;
 
-  --input: 44 20% 20%;
-  --ring: 44 54% 54%;
+  --input: 0 0% 18%;
+  --ring: 40 47% 55%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cormorant Garamond', serif;
@@ -115,20 +115,21 @@
 
 /* Custom Cursor */
 .custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 1px solid hsl(44 54% 54%);
+  width: 12px;
+  height: 12px;
+  background-color: hsl(40 47% 55%);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease-out, background-color 0.15s ease-out;
+  transition: transform 0.15s ease-out;
   transform: translate(-50%, -50%);
 }
 
 .custom-cursor.hovering {
-  background-color: hsl(44 54% 54% / 0.2);
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(3.33); /* scales to ~40px */
+  background-color: transparent;
+  border: 1px solid hsl(40 47% 55%);
 }
 
 @media (max-width: 768px) {
@@ -150,12 +151,11 @@
 /* Hero Background Animation */
 @keyframes ken-burns {
   0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  100% { transform: scale(1.08); }
 }
 
 .animate-ken-burns {
-  animation: ken-burns 20s ease-in-out infinite;
+  animation: ken-burns 12s ease-out infinite alternate;
 }
 
 /* Smooth Scrolling */

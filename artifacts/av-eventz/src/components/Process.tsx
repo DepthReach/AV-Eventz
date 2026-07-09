@@ -1,53 +1,86 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 export default function Process() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [lineWidth, setLineWidth] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+        // Calculate progress based on scroll position relative to the section
+        const progress = Math.min(1, Math.max(0, (windowHeight * 0.8 - rect.top) / (rect.height)));
+        setLineWidth(progress * 100);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const steps = [
-    { name: "Discovery", desc: "Understanding your brand and objectives." },
-    { name: "Planning", desc: "Crafting the blueprint and budgeting." },
-    { name: "Design", desc: "Conceptualizing themes and creatives." },
-    { name: "Production", desc: "Sourcing vendors and fabrication." },
-    { name: "Execution", desc: "On-ground management and show running." },
-    { name: "Celebration", desc: "Post-event reporting and wrap-up." }
+    { num: "01", title: "Discovery", desc: "Understanding your brand and objectives." },
+    { num: "02", title: "Planning", desc: "Meticulous timelines and resource mapping." },
+    { num: "03", title: "Design", desc: "Creating the visual and spatial experience." },
+    { num: "04", title: "Production", desc: "Sourcing, fabrication, and technical setup." },
+    { num: "05", title: "Execution", desc: "Flawless on-ground management." },
+    { num: "06", title: "Celebration", desc: "Post-event analytics and wrap-up." }
   ];
 
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }
+  };
+
   return (
-    <section className="py-24 bg-card/20 border-y border-border overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 text-center mb-16">
-        <span className="text-primary text-sm tracking-[0.2em] uppercase mb-4 block">Our Methodology</span>
-        <h2 className="text-4xl font-serif">How We Deliver Excellence</h2>
-      </div>
+    <section ref={sectionRef} className="bg-[#0d0d0d] py-32 px-6 md:px-12 overflow-hidden">
+      <div className="container mx-auto">
+        <h2 className="font-serif text-5xl md:text-[64px] text-center text-foreground mb-24">How We Work</h2>
+        
+        <div className="relative">
+          {/* Desktop horizontal line */}
+          <div className="hidden md:block absolute top-6 left-0 h-[1px] bg-white/10 w-full z-0">
+            <div 
+              className="h-full bg-primary transition-all duration-300 ease-out" 
+              style={{ width: `${lineWidth}%` }}
+            />
+          </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative">
-        {/* Connecting Line (Desktop) */}
-        <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[1px] bg-border z-0">
           <motion.div 
-            className="h-full bg-primary"
-            initial={{ width: "0%" }}
-            whileInView={{ width: "100%" }}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 relative z-10">
-          {steps.map((step, index) => (
-            <motion.div 
-              key={index} 
-              className="flex md:flex-col items-center md:text-center gap-6 md:gap-4 group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <div className="w-16 h-16 rounded-full bg-background border border-primary flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300">
-                <span className="font-serif text-xl text-primary group-hover:text-background transition-colors">0{index + 1}</span>
-              </div>
-              <div>
-                <h3 className="font-serif text-xl mb-2">{step.name}</h3>
-                <p className="text-muted-foreground text-sm font-light leading-relaxed">{step.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+            className="relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-4"
+          >
+            {steps.map((step, idx) => (
+              <motion.div key={idx} variants={fadeUp} className="flex flex-row md:flex-col items-center md:items-start text-left gap-6 md:gap-4 md:w-1/6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full border border-primary bg-[#0d0d0d] flex items-center justify-center font-sans text-sm text-primary">
+                  {step.num}
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl text-foreground mb-2 md:mt-4">{step.title}</h3>
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed md:max-w-[160px]">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

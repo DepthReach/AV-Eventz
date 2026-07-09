@@ -1,59 +1,46 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 export default function WhyChooseUs() {
-  const points = [
-    { title: "One Point Contact", desc: "A dedicated event manager from brief to wrap-up." },
-    { title: "Creative Concepts", desc: "Ideas that start fresh every time, not recycled templates." },
-    { title: "Professional Execution", desc: "Our team handles the chaos so you don't have to." },
-    { title: "Vendor Network", desc: "200+ vetted vendors for any requirement, any city." },
-    { title: "Transparent Pricing", desc: "No hidden charges. Ever." },
-    { title: "PAN India Support", desc: "Operations in 20+ cities across India." }
+  const reasons = [
+    { title: "One Point Contact", desc: "One dedicated person from brief to wrap-up." },
+    { title: "Creative Concepts", desc: "Every event gets a fresh concept, never recycled." },
+    { title: "Professional Execution", desc: "Our team handles the chaos so you never have to." },
+    { title: "Vendor Network", desc: "200+ vetted vendors across India." },
+    { title: "Transparent Pricing", desc: "What we quote is what you pay." },
+    { title: "PAN India Operations", desc: "20+ cities, same standard everywhere." }
   ];
 
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }
+  };
+
   return (
-    <section className="py-24 bg-card/30 relative border-y border-border">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row gap-16">
-          
-          <div className="w-full md:w-1/3">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="sticky top-32"
+    <section className="bg-[#0e0e0e] py-32 px-6 md:px-12 border-t border-primary/5">
+      <div className="container mx-auto max-w-5xl">
+        <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-16 text-center">Why AV Eventz?</h2>
+        
+        <div className="flex flex-col border-t border-white/10">
+          {reasons.map((reason, idx) => (
+            <motion.div 
+              key={idx}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="group border-b border-white/10 py-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 cursor-default transition-colors hover:bg-white/5"
             >
-              <span className="text-primary text-sm tracking-[0.2em] uppercase mb-4 block">The AV Advantage</span>
-              <h2 className="text-4xl md:text-5xl font-serif mb-6">Why Partner With Us?</h2>
-              <p className="text-muted-foreground text-lg font-light leading-relaxed">
-                In an industry where everyone promises the moon, we focus on delivering exactly what we agreed on — flawlessly.
-              </p>
+              <div className="font-serif text-3xl md:text-4xl text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 transform-origin-left w-16">
+                0{idx + 1}
+              </div>
+              <div className="flex-1">
+                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-2">{reason.title}</h3>
+                <p className="font-sans text-[15px] text-muted-foreground group-hover:text-foreground/80 transition-colors">
+                  {reason.desc}
+                </p>
+              </div>
             </motion.div>
-          </div>
-
-          <div className="w-full md:w-2/3">
-            <div className="relative border-l border-primary/30 pl-8 md:pl-12 py-4 space-y-16">
-              {points.map((point, index) => (
-                <motion.div 
-                  key={index}
-                  className="relative"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  {/* Bullet */}
-                  <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-background border-2 border-primary flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                  </div>
-                  
-                  <h3 className="text-2xl font-serif mb-2">{point.title}</h3>
-                  <p className="text-muted-foreground text-lg font-light">{point.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>

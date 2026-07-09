@@ -1,128 +1,121 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import srv1 from '@assets/AV_Images/Services/IMG-20260709-WA0061.jpg';
-import srv2 from '@assets/AV_Images/Services/IMG-20260709-WA0062.jpg';
-import srv3 from '@assets/AV_Images/Services/IMG-20260709-WA0035.jpg';
-import srv4 from '@assets/AV_Images/Services/IMG-20260709-WA0027.jpg';
-import srv5 from '@assets/AV_Images/Services/IMG-20260709-WA0017.jpg';
-import srv6 from '@assets/AV_Images/Services/IMG-20260709-WA0013.jpg';
+import { motion, type Variants } from 'framer-motion';
 
-const mainServices = [
-  {
-    title: "Corporate Events",
-    desc: "End-to-end management for town halls, leadership offsites, and corporate retreats. We ensure your corporate messaging is delivered in an environment that inspires.",
-    img: srv1,
-    align: "left"
-  },
-  {
-    title: "Conferences & Exhibitions",
-    desc: "Large-scale logistics, venue management, registration desks, and immersive exhibition stall designs that drive engagement and networking.",
-    img: srv2,
-    align: "right"
-  },
-  {
-    title: "Product Launches",
-    desc: "Theatrical reveals, brand activations, and press-worthy moments designed to put your new product in the spotlight it deserves.",
-    img: srv3,
-    align: "left"
-  },
-  {
-    title: "Award Nights & Galas",
-    desc: "Glamorous red-carpet setups, stage design, trophies, and flawless show-running to celebrate your industry's best in style.",
-    img: srv4,
-    align: "right"
-  },
-  {
-    title: "Artist Management",
-    desc: "Curated entertainment from motivational speakers to A-list celebrities and bands, handling all riders and technical requirements.",
-    img: srv5,
-    align: "left"
-  },
-  {
-    title: "Technical Production",
-    desc: "State-of-the-art sound, lighting, LED walls, and AV setups managed by technical experts who leave nothing to chance.",
-    img: srv6,
-    align: "right"
-  }
-];
-
-const smallServices = [
-  "Wedding Planning", "Fabrication", "Venue Management", 
-  "Sound & Lighting", "Registration Desk", "Hospitality"
-];
+import img1 from '@assets/AV_Images/Services/IMG-20260709-WA0061.jpg';
+import img2 from '@assets/AV_Images/Services/IMG-20260709-WA0062.jpg';
+import img3 from '@assets/AV_Images/Services/IMG-20260709-WA0035.jpg';
+import img4 from '@assets/AV_Images/Services/IMG-20260709-WA0027.jpg';
+import img5 from '@assets/AV_Images/Services/IMG-20260709-WA0017.jpg';
+import img6 from '@assets/AV_Images/Services/IMG-20260709-WA0013.jpg';
 
 export default function Services() {
+  const mainServices = [
+    {
+      img: img1,
+      title: "Corporate Events & Annual Meets",
+      text: "From intimate leadership offsites to 2,000-person annual conferences, we design events that reflect your company's culture and ambitions.",
+      alignLeft: false
+    },
+    {
+      img: img2,
+      title: "Product Launches & Brand Activations",
+      text: "We create launch experiences that get your product talked about — spatial storytelling, tech-forward setups, and audiences who remember what they felt.",
+      alignLeft: true
+    },
+    {
+      img: img3,
+      title: "Conferences & Exhibitions",
+      text: "Complex multi-day conferences, seminar series, trade shows — we manage the full chain from speaker logistics to stall fabrication.",
+      alignLeft: false
+    },
+    {
+      img: img4,
+      title: "Award Ceremonies & Gala Nights",
+      text: "Velvet, drama, and a flawless programme. We make your recognition events feel as prestigious as the people being honored.",
+      alignLeft: true
+    },
+    {
+      img: img5,
+      title: "Audio Visual & Technical Production",
+      text: "LED walls, pro-grade sound, automated lighting, and stage engineering — everything needed for events that feel technically immaculate.",
+      alignLeft: false
+    },
+    {
+      img: img6,
+      title: "Artist Management & Entertainment",
+      text: "Emcees, performers, motivational speakers, musical acts — we source and manage talent so your event has the energy it deserves.",
+      alignLeft: true
+    }
+  ];
+
+  const secondaryServices = [
+    "Wedding Planning", "Dealer Meets", "Hospitality", 
+    "Fabrication", "Venue Management", "Registration Desk", 
+    "Lighting", "Sound", "AV & LED Walls"
+  ];
+
+  const contentFade: Variants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+  };
+  const contentFadeLeft: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+  };
+
   return (
-    <section id="services" className="py-24 bg-background">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center mb-20">
-          <span className="text-primary text-sm tracking-[0.2em] uppercase mb-4 block">Our Expertise</span>
-          <h2 className="text-4xl md:text-5xl font-serif">What We Do Best</h2>
-        </div>
+    <section id="services" className="bg-[#111] overflow-hidden w-full">
+      <div className="w-full">
+        {mainServices.map((srv, idx) => (
+          <div key={idx} className={`flex flex-col ${srv.alignLeft ? 'md:flex-row-reverse' : 'md:flex-row'} w-full min-h-[500px]`}>
+            {/* Image Side */}
+            <div className="w-full md:w-1/2 relative h-[400px] md:h-auto overflow-hidden group">
+              <img 
+                src={srv.img} 
+                alt={srv.title} 
+                className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-3000 ease-out transform group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/20" />
+            </div>
 
-        <div className="space-y-32">
-          {mainServices.map((srv, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col gap-12 items-center ${srv.align === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'}`}
-            >
+            {/* Text Side */}
+            <div className="w-full md:w-1/2 flex items-center justify-center p-12 lg:p-24 bg-[#0a0a0a]">
               <motion.div 
-                className="w-full md:w-1/2 relative overflow-hidden group"
-                initial={{ opacity: 0, x: srv.align === 'left' ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
+                variants={srv.alignLeft ? contentFade : contentFadeLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="max-w-[480px] w-full"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-card">
-                  <img 
-                    src={srv.img} 
-                    alt={srv.title} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                  />
-                </div>
-                <div className="absolute inset-0 border border-primary/20 m-4 pointer-events-none transition-all duration-500 group-hover:m-6 group-hover:border-primary/50"></div>
-              </motion.div>
-
-              <motion.div 
-                className="w-full md:w-1/2 flex flex-col justify-center"
-                initial={{ opacity: 0, x: srv.align === 'left' ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-              >
-                <span className="text-primary font-mono text-sm mb-4">0{index + 1} //</span>
-                <h3 className="text-3xl md:text-4xl font-serif mb-6">{srv.title}</h3>
-                <p className="text-muted-foreground text-lg font-light leading-relaxed mb-8 max-w-lg">
-                  {srv.desc}
+                <div className="font-serif text-2xl text-primary/50 mb-6">0{idx + 1}</div>
+                <h3 className="font-serif text-[40px] md:text-[48px] leading-[1.1] text-foreground mb-6">
+                  {srv.title}
+                </h3>
+                <p className="font-sans text-[16px] text-muted-foreground leading-relaxed mb-10">
+                  {srv.text}
                 </p>
-                <a href="#contact" className="inline-flex items-center text-primary font-medium group hover:text-foreground transition-colors w-fit">
-                  <span className="mr-2 uppercase text-sm tracking-wider">Discuss Requirements</span>
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                <a href="#contact" className="inline-block font-sans text-sm uppercase tracking-widest text-primary relative group">
+                  Request a Quote
+                  <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary group-hover:w-0 transition-all duration-300" />
                 </a>
               </motion.div>
             </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 py-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0 border-t border-l border-white/5">
+          {secondaryServices.map((srv, idx) => (
+            <div 
+              key={idx} 
+              className="border-r border-b border-white/5 p-8 flex items-center justify-center hover:bg-[#C9A84C]/5 transition-colors duration-300 cursor-default group"
+            >
+              <span className="font-sans text-sm uppercase tracking-widest text-primary/70 group-hover:text-primary transition-colors text-center">
+                {srv}
+              </span>
+            </div>
           ))}
         </div>
-
-        {/* Small Services Grid */}
-        <div className="mt-32 pt-16 border-t border-border">
-          <h3 className="text-center font-serif text-2xl text-muted-foreground mb-12">Also specializing in</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            {smallServices.map((service, idx) => (
-              <motion.div 
-                key={idx}
-                className="px-4 py-6 bg-card/30 border border-border hover:border-primary/50 transition-colors"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-              >
-                <span className="text-sm uppercase tracking-wider">{service}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );

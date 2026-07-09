@@ -1,17 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { Link } from 'wouter';
-
-const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Clients', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
-];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,75 +9,70 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Clients', href: '#clients' },
+    { name: 'Contact', href: '#contact' }
+  ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-background/80 backdrop-blur-md py-4 border-b border-border' : 'bg-transparent py-6'
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled ? 'bg-[#111]/85 backdrop-blur-lg border-b border-primary/20 py-4' : 'bg-transparent py-6'
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <div className="flex items-center">
-            <a href="#home" onClick={(e) => { e.preventDefault(); scrollTo('#home'); }} className="text-2xl font-serif text-primary tracking-wider font-bold">
+          <div className="flex-1">
+            <a href="#" className="font-serif text-primary text-[28px] tracking-[0.1em]">
               AV Eventz
             </a>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            {NAV_LINKS.map((link) => (
+          <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center">
+            {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.name}
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(link.href);
-                }}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors relative group"
+                className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors"
               >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
+                {link.name}
+                <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
               </a>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center justify-end gap-4 flex-1">
             <a
               href="tel:+919466227355"
-              className="flex items-center space-x-2 text-sm font-medium px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="text-[12px] uppercase tracking-wider border border-primary text-primary px-5 py-2 hover:bg-primary hover:text-black transition-colors"
             >
-              <Phone size={16} />
-              <span>Call Us</span>
+              Call Us
             </a>
             <a
               href="https://wa.me/919466227355"
               target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 bg-green-500 text-white hover:bg-green-600 transition-colors"
+              rel="noreferrer"
+              className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-110 transition-transform"
             >
-              <FaWhatsapp size={20} />
+              <FaWhatsapp className="w-5 h-5" />
             </a>
           </div>
 
           <button
-            aria-label="Open navigation menu"
-            className="md:hidden text-foreground hover:text-primary transition-colors"
+            className="lg:hidden text-primary"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <Menu size={28} />
+            <Menu className="w-8 h-8" />
           </button>
         </div>
       </header>
@@ -95,57 +80,41 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-background flex flex-col p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="fixed inset-0 z-[60] bg-[#111] flex flex-col justify-center items-center"
           >
-            <div className="flex justify-between items-center mb-12">
-              <span className="text-2xl font-serif text-primary tracking-wider font-bold">
-                AV Eventz
-              </span>
-              <button
-                aria-label="Close navigation menu"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                <X size={28} />
-              </button>
-            </div>
-
-            <nav className="flex flex-col space-y-6 text-xl font-serif">
-              {NAV_LINKS.map((link) => (
+            <button
+              className="absolute top-6 right-6 text-primary"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X className="w-10 h-10" />
+            </button>
+            <nav className="flex flex-col items-center gap-8">
+              {navLinks.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.name}
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollTo(link.href);
-                  }}
-                  className="text-foreground hover:text-primary transition-colors border-b border-border pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-serif text-4xl text-foreground hover:text-primary transition-colors"
                 >
-                  {link.label}
+                  {link.name}
                 </a>
               ))}
             </nav>
-
-            <div className="mt-auto flex flex-col space-y-4 pt-8 border-t border-border">
-              <a
-                href="tel:+919466227355"
-                className="flex items-center justify-center space-x-2 text-lg font-medium p-4 border border-primary text-primary"
-              >
-                <Phone size={20} />
-                <span>+91 9466227355</span>
+            <div className="mt-12 flex gap-6">
+              <a href="tel:+919466227355" className="border border-primary text-primary px-6 py-3 uppercase tracking-widest text-sm hover:bg-primary hover:text-black transition-colors">
+                Call Us
               </a>
               <a
                 href="https://wa.me/919466227355"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 text-lg font-medium p-4 bg-green-500 text-white"
+                rel="noreferrer"
+                className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white"
               >
-                <FaWhatsapp size={20} />
-                <span>WhatsApp Us</span>
+                <FaWhatsapp className="w-6 h-6" />
               </a>
             </div>
           </motion.div>

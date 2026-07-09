@@ -1,41 +1,25 @@
 export default function TrustedBy() {
-  const logos = [
-    "INDIAN OIL",
-    "IDFC BANK",
-    "DAINIK JAGRAN",
-    "DAINIK BHASKAR",
-    "MITRA INDUSTRIES",
-    "RELIANCE",
-    "TATA MOTORS",
-    "HDFC LIFE"
-  ];
-
+  const clients = ['INDIAN OIL', 'IDFC BANK', 'DAINIK JAGRAN', 'DAINIK BHASKAR', 'MITRA INDUSTRIES'];
+  
   return (
-    <section className="py-16 border-y border-primary/20 bg-background overflow-hidden relative">
-      <div className="container mx-auto px-6 mb-8 text-center">
-        <h4 className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Trusted by India's Leading Brands</h4>
+    <section id="clients" className="bg-[#0d0d0d] py-16 overflow-hidden border-b border-primary/10">
+      <div className="flex items-center justify-center gap-4 mb-10 opacity-70">
+        <div className="h-[1px] w-8 bg-primary"></div>
+        <p className="font-sans text-[12px] uppercase tracking-[0.2em] text-muted-foreground">
+          Trusted by India's finest companies
+        </p>
+        <div className="h-[1px] w-8 bg-primary"></div>
       </div>
-      
-      <div className="relative w-full flex overflow-x-hidden">
-        {/* We need two containers for smooth infinite scroll */}
-        <div className="animate-marquee whitespace-nowrap flex items-center">
-          {logos.map((logo, index) => (
-            <span 
-              key={`logo-1-${index}`} 
-              className="mx-12 md:mx-20 text-xl md:text-3xl font-serif font-bold text-muted-foreground hover:text-primary transition-colors duration-300 cursor-default"
+
+      <div className="relative flex overflow-x-hidden w-full group">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
+            <div 
+              key={i} 
+              className="px-12 font-sans text-[13px] uppercase tracking-[0.25em] text-foreground/30 hover:text-primary hover:opacity-100 transition-all duration-300 select-none"
             >
-              {logo}
-            </span>
-          ))}
-        </div>
-        <div className="animate-marquee whitespace-nowrap flex items-center absolute top-0 left-full">
-          {logos.map((logo, index) => (
-            <span 
-              key={`logo-2-${index}`} 
-              className="mx-12 md:mx-20 text-xl md:text-3xl font-serif font-bold text-muted-foreground hover:text-primary transition-colors duration-300 cursor-default"
-            >
-              {logo}
-            </span>
+              {client}
+            </div>
           ))}
         </div>
       </div>
