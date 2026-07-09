@@ -1,0 +1,585 @@
+Build a completely new premium website for AV Eventz (AV Enterprise). Use the existing prototype only as inspiration and do NOT copy its layout. The final website should feel handcrafted by a premium creative agency, not AI-generated. Every section must have unique spacing, layouts, interactions and storytelling. Prioritize trust, premium branding, smooth animations, fast loading, SEO, and lead generation.
+
+COMPANY DETAILS
+
+Brand Name: AV Eventz
+Legal Name (Footer Only): AV Enterprise
+
+Tagline:
+Creating Experiences. Building Memories. Delivering Excellence.
+
+Contact Number:
++91 9466227355
+
+Email:
+avevent@zoho.in
+
+Address:
+B-07/2, HUDA Market,
+Opp. Nehru College,
+Sector-16,
+Faridabad,
+Haryana
+
+====================================
+IMPORTANT IMAGE INSTRUCTIONS
+====================================
+
+I have uploaded five folders.
+
+Hero
+About
+Services
+Portfolio
+Owner
+
+Use ONLY these uploaded folders.
+
+Hero folder:
+Choose the best image (or video if available) as the hero background.
+
+About folder:
+Use images showing professionalism and teamwork.
+
+Services folder:
+Assign one unique image to every major service.
+
+Portfolio folder:
+Use around 18-24 best images only.
+Never dump all images.
+Create a beautiful masonry gallery.
+
+Owner folder:
+Use the best professional portrait.
+
+Never repeat images unnecessarily.
+
+====================================
+DESIGN STYLE
+====================================
+
+The website must look like a ₹1,00,000 custom agency website.
+
+Do NOT make it look AI generated.
+
+Avoid:
+
+Generic cards
+
+Repeated spacing
+
+Template layouts
+
+Stock icons
+
+Overused gradients
+
+Empty decorative shapes
+
+Robotic copywriting
+
+Instead create:
+
+Luxury layout
+
+Editorial typography
+
+Modern premium UI
+
+Beautiful whitespace
+
+Glassmorphism
+
+Smooth micro animations
+
+Large cinematic images
+
+Elegant hover effects
+
+Premium transitions
+
+Mouse interactions on desktop
+
+Dark luxury theme with warm white and gold highlights.
+
+====================================
+COLORS
+====================================
+
+Primary:
+#111111
+
+Secondary:
+#F8F6F2
+
+Accent:
+Soft Gold
+
+Buttons:
+Black with Gold hover
+
+No flashy gradients.
+
+====================================
+TYPOGRAPHY
+====================================
+
+Elegant Serif for headings.
+
+Modern Sans Serif for body.
+
+Large typography.
+
+Beautiful line spacing.
+
+====================================
+HEADER
+====================================
+
+Transparent initially.
+
+Becomes glassmorphism on scroll.
+
+Sticky.
+
+Navigation
+
+Home
+
+About
+
+Services
+
+Portfolio
+
+Clients
+
+Contact
+
+Right Side
+
+Call Button
+
+WhatsApp Button
+
+====================================
+HERO
+====================================
+
+Full screen.
+
+Autoplay background video if available.
+
+Otherwise use Hero image.
+
+Dark cinematic overlay.
+
+Animated spotlight effect.
+
+Slow zoom animation.
+
+Large heading:
+
+Every Event Has One Chance To Make An Impression.
+
+Sub heading:
+
+AV Eventz creates conferences, exhibitions, product launches, annual meets, award nights and unforgettable corporate experiences across India.
+
+Buttons
+
+Get Free Consultation
+
+View Portfolio
+
+Right side
+
+Floating Glass Statistics
+
+500+
+
+Events
+
+150+
+
+Corporate Clients
+
+20+
+
+Cities
+
+98%
+
+Client Satisfaction
+
+Animate counters.
+
+====================================
+TRUSTED BY
+====================================
+
+Horizontal logo marquee.
+
+Use logos of
+
+Indian Oil
+
+IDFC Bank
+
+Dainik Jagran
+
+Dainik Bhaskar
+
+Mitra Industries
+
+Black and white by default.
+
+Color on hover.
+
+====================================
+ABOUT
+====================================
+
+Split Layout.
+
+Left
+
+Story.
+
+Right
+
+About Image.
+
+Write natural human copy.
+
+No AI sounding marketing lines.
+
+Below create three premium cards
+
+Mission
+
+Vision
+
+Values
+
+====================================
+WHY CHOOSE US
+====================================
+
+Animated timeline.
+
+One Point Contact
+
+Creative Concepts
+
+Professional Execution
+
+Vendor Network
+
+Transparent Pricing
+
+PAN India Support
+
+====================================
+SERVICES
+====================================
+
+Create alternating premium sections instead of simple cards.
+
+Each service gets
+
+Large Image
+
+Description
+
+Hover CTA
+
+Services
+
+Corporate Events
+
+Annual Meets
+
+Product Launches
+
+Dealer Meets
+
+Award Functions
+
+Conferences
+
+Exhibitions
+
+Brand Activations
+
+Wedding Planning
+
+Artist Management
+
+Fabrication
+
+Venue Management
+
+Audio Visual
+
+LED Walls
+
+Lighting
+
+Sound
+
+Registration Desk
+
+Hospitality
+
+====================================
+PROCESS
+====================================
+
+Horizontal timeline.
+
+Discovery
+
+Planning
+
+Design
+
+Production
+
+Execution
+
+Celebration
+
+Animated progress while scrolling.
+
+====================================
+PORTFOLIO
+====================================
+
+Pinterest style masonry gallery.
+
+Use Portfolio folder.
+
+Hover
+
+Zoom
+
+Overlay
+
+Event Category
+
+Lightbox
+
+Category Filters
+
+Corporate
+
+Conference
+
+Exhibition
+
+Brand Activation
+
+Wedding
+
+Award Night
+
+====================================
+FOUNDER
+====================================
+
+Professional owner image.
+
+Heading
+
+Meet The Founder
+
+Short personal story.
+
+Buttons
+
+WhatsApp
+
+Call Now
+
+====================================
+TESTIMONIALS
+====================================
+
+Premium review cards.
+
+Human language.
+
+Marketing Head
+
+HR Manager
+
+Operations Head
+
+Corporate Communications
+
+====================================
+FAQ
+====================================
+
+Accordion
+
+Questions
+
+How much does an event cost?
+
+Which cities do you serve?
+
+Can you manage large events?
+
+How early should we book?
+
+Do you provide end to end management?
+
+====================================
+CONTACT
+====================================
+
+Left
+
+Phone
+
+Email
+
+Address
+
+Google Map
+
+Business Hours
+
+WhatsApp
+
+Right
+
+Premium Form
+
+Name
+
+Phone
+
+Email
+
+Company
+
+Event Type
+
+Budget
+
+Message
+
+Large Submit Button
+
+====================================
+FOOTER
+====================================
+
+Logo
+
+Quick Links
+
+Services
+
+Contact
+
+Email
+
+Phone
+
+Address
+
+Social Icons
+
+Copyright
+
+Write
+
+AV Eventz — A Brand of AV Enterprise
+
+====================================
+SEO
+====================================
+
+Title
+
+AV Eventz | Corporate Event Management Company in Delhi NCR
+
+Meta Description
+
+AV Eventz is a leading corporate event management company offering conferences, exhibitions, product launches, annual meets, award ceremonies and complete event solutions across Delhi NCR and India.
+
+Keywords
+
+Corporate Event Management Delhi
+
+Corporate Event Planner
+
+Conference Organizer
+
+Product Launch Company
+
+Award Function Planner
+
+Exhibition Management
+
+Event Company Faridabad
+
+Corporate Events Delhi NCR
+
+====================================
+ANIMATIONS
+====================================
+
+Smooth scrolling
+
+Fade Up
+
+Reveal on Scroll
+
+Parallax Images
+
+Animated Numbers
+
+Hover Lift
+
+Cursor Effects on Desktop
+
+Glassmorphism
+
+Floating Cards
+
+Sticky Navigation
+
+Elegant Loading Screen
+
+====================================
+PERFORMANCE
+====================================
+
+90+ Lighthouse Score
+
+Lazy Load Images
+
+Responsive
+
+SEO Optimized
+
+Accessible
+
+Fast Loading
+
+WebP Images
+
+Semantic HTML
+
+====================================
+FINAL INSTRUCTION
+====================================
+
+Do NOT create a generic template website.
+
+Build a premium, luxurious, human-designed experience that feels custom-made for AV Eventz. Use the uploaded image folders intelligently, vary every section layout, write authentic copy, and make the website suitable for corporate decision-makers looking for a high-end event management company. The final result should look comparable to the work of a top design agency, with a polished, trustworthy, and memorable user experience.
