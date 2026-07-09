@@ -53,13 +53,23 @@ export default function Services() {
     "Lighting", "Sound", "AV & LED Walls"
   ];
 
-  const contentFade: Variants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+  const imageReveal: Variants = {
+    hidden: { clipPath: 'inset(0 100% 0 0)' },
+    visible: { clipPath: 'inset(0 0% 0 0)', transition: { duration: 1.2, ease: [0.77, 0, 0.175, 1] } }
   };
-  const contentFadeLeft: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+
+  const imageRevealLeft: Variants = {
+    hidden: { clipPath: 'inset(0 0 0 100%)' },
+    visible: { clipPath: 'inset(0 0 0 0%)', transition: { duration: 1.2, ease: [0.77, 0, 0.175, 1] } }
+  };
+
+  const textReveal: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.4 } }
+  };
+  const textItem: Variants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } }
   };
 
   return (
@@ -69,34 +79,43 @@ export default function Services() {
           <div key={idx} className={`flex flex-col ${srv.alignLeft ? 'md:flex-row-reverse' : 'md:flex-row'} w-full min-h-[500px]`}>
             {/* Image Side */}
             <div className="w-full md:w-1/2 relative h-[400px] md:h-auto overflow-hidden group">
-              <img 
-                src={srv.img} 
-                alt={srv.title} 
-                className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-3000 ease-out transform group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/20" />
+              <motion.div
+                variants={srv.alignLeft ? imageRevealLeft : imageReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+                className="w-full h-full"
+              >
+                <img 
+                  src={srv.img} 
+                  alt={srv.title} 
+                  className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-[3000ms] ease-out transform group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </motion.div>
             </div>
 
             {/* Text Side */}
             <div className="w-full md:w-1/2 flex items-center justify-center p-12 lg:p-24 bg-[#0a0a0a]">
               <motion.div 
-                variants={srv.alignLeft ? contentFade : contentFadeLeft}
+                variants={textReveal}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 className="max-w-[480px] w-full"
               >
-                <div className="font-serif text-2xl text-primary/50 mb-6">0{idx + 1}</div>
-                <h3 className="font-serif text-[40px] md:text-[48px] leading-[1.1] text-foreground mb-6">
+                <motion.div variants={textItem} className="font-serif text-2xl text-primary/50 mb-6">0{idx + 1}</motion.div>
+                <motion.h3 variants={textItem} className="font-serif text-[40px] md:text-[48px] leading-[1.1] text-foreground mb-6">
                   {srv.title}
-                </h3>
-                <p className="font-sans text-[16px] text-muted-foreground leading-relaxed mb-10">
+                </motion.h3>
+                <motion.p variants={textItem} className="font-sans text-[16px] text-muted-foreground leading-relaxed mb-10">
                   {srv.text}
-                </p>
-                <a href="#contact" className="inline-block font-sans text-sm uppercase tracking-widest text-primary relative group">
+                </motion.p>
+                <motion.a variants={textItem} href="#contact" aria-label="Request a Quote" className="inline-block font-sans text-sm uppercase tracking-widest text-primary relative group btn-magnetic">
                   Request a Quote
                   <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-primary group-hover:w-0 transition-all duration-300" />
-                </a>
+                </motion.a>
               </motion.div>
             </div>
           </div>

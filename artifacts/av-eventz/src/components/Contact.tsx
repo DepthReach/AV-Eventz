@@ -3,28 +3,46 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     name: '',
     phone: '',
     email: '',
     company: '',
-    type: '',
+    eventType: '',
     budget: '',
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validate = () => {
+    const errs: Record<string, string> = {};
+    if (!form.name.trim()) errs.name = 'Name is required';
+    if (!form.phone.trim() || !/^[0-9+\s-]{8,15}$/.test(form.phone)) errs.phone = 'Valid phone required';
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Valid email required';
+    if (!form.eventType) errs.eventType = 'Please select an event type';
+    return errs;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 500);
+    const errs = validate();
+    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
+    setIsSubmitting(true);
+    setErrors({});
+    // Simulate async
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setSubmitted(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errors[e.target.name]) {
+      setErrors(prev => ({ ...prev, [e.target.name]: '' }));
+    }
   };
 
   return (
@@ -62,7 +80,8 @@ export default function Contact() {
             href="https://wa.me/919466227355" 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 font-sans text-sm uppercase tracking-widest hover:bg-[#20b858] transition-colors rounded-sm"
+            aria-label="Chat on WhatsApp"
+            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 font-sans text-sm uppercase tracking-widest hover:bg-[#20b858] transition-colors rounded-sm btn-magnetic"
           >
             <FaWhatsapp className="w-5 h-5" /> Chat on WhatsApp
           </a>
@@ -73,6 +92,7 @@ export default function Contact() {
           <iframe 
             src="https://maps.google.com/maps?q=Sector+16+Faridabad+Haryana&output=embed" 
             className="absolute inset-0 w-full h-full border-0 grayscale invert"
+            title="Location Map"
             allowFullScreen
             loading="lazy"
           ></iframe>
@@ -84,18 +104,10 @@ export default function Contact() {
       <div className="w-full lg:w-[55%] p-12 md:p-24 bg-[#111] flex items-center justify-center">
         
         {submitted ? (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center"
-          >
-            <div className="w-24 h-24 rounded-full border border-primary flex items-center justify-center mx-auto mb-8 text-primary">
-              <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="font-serif text-4xl text-foreground mb-4">Thank You</h3>
-            <p className="font-sans text-muted-foreground">We'll be in touch within 24 hours.</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20">
+            <div className="text-5xl font-serif text-primary mb-4">✓</div>
+            <h3 className="font-serif text-2xl text-foreground mb-2">Message Sent</h3>
+            <p className="font-sans text-sm text-muted-foreground">We'll be in touch within 24 hours.</p>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full max-w-[600px] space-y-10">
@@ -104,23 +116,25 @@ export default function Contact() {
                 <input 
                   type="text" 
                   name="name"
-                  required
-                  value={formData.name}
+                  aria-label="Full Name"
+                  value={form.name}
                   onChange={handleChange}
                   placeholder="Full Name"
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
+                {errors.name && <p className="text-red-400 text-xs mt-1 absolute -bottom-5">{errors.name}</p>}
               </div>
               <div className="relative group">
                 <input 
                   type="tel" 
                   name="phone"
-                  required
-                  value={formData.phone}
+                  aria-label="Phone Number"
+                  value={form.phone}
                   onChange={handleChange}
                   placeholder="Phone Number"
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
+                {errors.phone && <p className="text-red-400 text-xs mt-1 absolute -bottom-5">{errors.phone}</p>}
               </div>
             </div>
 
@@ -129,18 +143,20 @@ export default function Contact() {
                 <input 
                   type="email" 
                   name="email"
-                  required
-                  value={formData.email}
+                  aria-label="Email Address"
+                  value={form.email}
                   onChange={handleChange}
                   placeholder="Email Address"
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
+                {errors.email && <p className="text-red-400 text-xs mt-1 absolute -bottom-5">{errors.email}</p>}
               </div>
               <div className="relative group">
                 <input 
                   type="text" 
                   name="company"
-                  value={formData.company}
+                  aria-label="Company Name"
+                  value={form.company}
                   onChange={handleChange}
                   placeholder="Company Name"
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
@@ -151,9 +167,9 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="relative group">
                 <select 
-                  name="type"
-                  defaultValue=""
-                  required
+                  name="eventType"
+                  aria-label="Event Type"
+                  value={form.eventType}
                   onChange={handleChange}
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground focus:outline-none focus:border-primary transition-colors appearance-none"
                 >
@@ -166,12 +182,13 @@ export default function Contact() {
                   <option value="Wedding" className="bg-[#111]">Wedding</option>
                   <option value="Other" className="bg-[#111]">Other</option>
                 </select>
+                {errors.eventType && <p className="text-red-400 text-xs mt-1 absolute -bottom-5">{errors.eventType}</p>}
               </div>
               <div className="relative group">
                 <select 
                   name="budget"
-                  defaultValue=""
-                  required
+                  aria-label="Estimated Budget"
+                  value={form.budget}
                   onChange={handleChange}
                   className="w-full bg-transparent border-b border-primary/30 py-3 font-sans text-foreground focus:outline-none focus:border-primary transition-colors appearance-none"
                 >
@@ -187,8 +204,8 @@ export default function Contact() {
             <div className="relative group">
               <textarea 
                 name="message"
-                required
-                value={formData.message}
+                aria-label="Message"
+                value={form.message}
                 onChange={handleChange}
                 placeholder="Tell us about your event..."
                 rows={4}
@@ -198,9 +215,14 @@ export default function Contact() {
 
             <button 
               type="submit"
-              className="w-full bg-black border border-primary text-primary h-14 font-sans text-sm uppercase tracking-widest hover:bg-primary hover:text-black transition-colors duration-300 mt-4"
+              disabled={isSubmitting}
+              className="w-full bg-black border border-primary text-primary h-14 font-sans text-sm uppercase tracking-widest hover:bg-primary hover:text-black transition-colors duration-300 mt-4 flex items-center justify-center relative btn-magnetic"
             >
-              Submit Enquiry
+              {isSubmitting ? (
+                <div className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+              ) : (
+                "Submit Enquiry"
+              )}
             </button>
           </form>
         )}

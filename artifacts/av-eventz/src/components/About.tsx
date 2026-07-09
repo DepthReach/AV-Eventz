@@ -8,6 +8,16 @@ export default function About() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
   };
 
+  const clipRevealTop: Variants = {
+    hidden: { clipPath: 'inset(0 100% 0 0)' },
+    visible: { clipPath: 'inset(0 0% 0 0)', transition: { duration: 1.1, ease: [0.77, 0, 0.175, 1] } }
+  };
+
+  const clipRevealBottom: Variants = {
+    hidden: { clipPath: 'inset(0 100% 0 0)' },
+    visible: { clipPath: 'inset(0 0% 0 0)', transition: { duration: 1.1, delay: 0.25, ease: [0.77, 0, 0.175, 1] } }
+  };
+
   return (
     <section id="about" className="bg-[#111] pt-32 pb-24 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 mb-16">
@@ -40,22 +50,24 @@ export default function About() {
 
           <div className="w-full lg:w-[45vw] relative min-h-[600px] lg:min-h-[700px]">
             <motion.img 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+              variants={clipRevealTop}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               src={imgTop} 
-              alt="Corporate Event Setup" 
+              alt="Corporate Event Setup with precise lighting and sound" 
               className="absolute top-0 right-0 w-[80%] h-[400px] object-cover border border-white/5 grayscale-[20%]"
+              loading="lazy"
             />
             <motion.img 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              variants={clipRevealBottom}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               src={imgBottom} 
-              alt="Conference Audience" 
+              alt="Conference Audience engaging with the speaker" 
               className="absolute bottom-0 left-0 lg:-left-10 w-[70%] h-[350px] object-cover border border-white/5 grayscale-[20%] shadow-2xl"
+              loading="lazy"
             />
           </div>
         </div>

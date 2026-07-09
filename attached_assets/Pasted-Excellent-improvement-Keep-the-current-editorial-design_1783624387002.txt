@@ -1,0 +1,74 @@
+Excellent improvement. Keep the current editorial design and do not redesign it again. I only want refinement and production-level polish.
+
+1. Add subtle page transition animations between sections without affecting performance.
+
+2. Add cinematic image reveals using clip-path or mask animations instead of simple fade-ins.
+
+3. Improve the hero with a subtle moving light overlay and slow parallax background effect.
+
+4. Add premium hover interactions throughout:
+- Buttons should have magnetic hover.
+- Images should slightly scale with depth.
+- Service sections should animate text independently from images.
+- Portfolio items should have elegant overlay transitions.
+
+5. Improve the portfolio further:
+- Lazy-load images.
+- Display event category.
+- Display event location if available.
+- Add smooth lightbox transitions.
+- Enable swipe on mobile.
+
+6. Make the client logo section look more premium:
+- Infinite smooth marquee.
+- Pause on hover.
+- Gold accent on hover.
+- SVG logos wherever possible.
+
+7. Improve typography rhythm:
+- Better spacing between headings and paragraphs.
+- Consistent vertical spacing.
+- Better line lengths for readability.
+
+8. Optimize every image:
+- Use next/image or equivalent optimization.
+- Generate responsive image sizes.
+- Convert to WebP where supported.
+
+9. Improve accessibility:
+- Keyboard navigation.
+- Visible focus states.
+- Proper ARIA labels.
+- Semantic HTML.
+
+10. Improve SEO:
+- Complete Open Graph tags.
+- Twitter cards.
+- JSON-LD Local Business schema.
+- Event Management schema.
+- Canonical URL.
+- Dynamic sitemap.xml.
+- robots.txt.
+
+11. Improve contact form:
+- Client-side validation.
+- Loading state.
+- Success toast.
+- Error handling.
+- Spam protection placeholder.
+
+12. Improve mobile experience:
+- Perfect spacing on all breakpoints.
+- Sticky bottom CTA with Call and WhatsApp on mobile only.
+- Portfolio optimized for touch gestures.
+
+13. Add subtle premium details:
+- Animated section dividers.
+- Smooth scroll progress indicator.
+- Elegant custom cursor only on desktop.
+- Refined loading animation.
+- Soft glassmorphism where appropriate.
+
+14. Maintain the existing layout. Refine only. Do not redesign the page structure.
+
+15. Target a Lighthouse score above 90 for Performance, Accessibility, SEO, and Best Practices.

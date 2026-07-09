@@ -144,9 +144,8 @@
   100% { transform: translateX(-50%); }
 }
 
-.animate-marquee {
-  animation: marquee 25s linear infinite;
-}
+.marquee-track { animation: marquee 30s linear infinite; }
+.marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
 
 /* Hero Background Animation */
 @keyframes ken-burns {
@@ -161,4 +160,44 @@
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #C9A84C;
+  z-index: 9999;
+  transform-origin: left;
+  transition: width 0.1s linear;
+}
+
+/* Clip-path reveal keyframe */
+@keyframes clip-reveal-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+@keyframes clip-reveal-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* Magnetic button effect */
+.btn-magnetic { transition: transform 0.3s cubic-bezier(0.23,1,0.32,1); }
+
+/* Focus-visible styles */
+:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Mobile sticky CTA bar */
+.mobile-cta-bar {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .mobile-cta-bar { display: none !important; }
 }

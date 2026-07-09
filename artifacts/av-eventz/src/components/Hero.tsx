@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import heroBg from '@assets/AV_Images/Hero/IMG-20260709-WA0057.jpg';
 
 function CountUp({ end, suffix = "", duration = 2 }: { end: number, suffix?: string, duration?: number }) {
@@ -38,6 +38,22 @@ function CountUp({ end, suffix = "", duration = 2 }: { end: number, suffix?: str
 }
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 600], [0, 80]);
+
+  const [lightPos, setLightPos] = useState({ x: 30, y: 50 });
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      setLightPos({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100
+      });
+    };
+    window.addEventListener('mousemove', handler, { passive: true });
+    return () => window.removeEventListener('mousemove', handler);
+  }, []);
+
   const staggerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,14 +70,20 @@ export default function Hero() {
   return (
     <section id="home" className="relative w-full h-[100dvh] flex items-center overflow-hidden bg-background">
       {/* Background Image with Ken Burns */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-ken-burns scale-100"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
         {/* Cinematic Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[rgba(17,17,17,0.88)] to-[rgba(17,17,17,0.45)]" />
-      </div>
+        <div
+          className="absolute inset-0 pointer-events-none transition-[background] duration-1000"
+          style={{
+            background: `radial-gradient(circle 600px at ${lightPos.x}% ${lightPos.y}%, rgba(201,168,76,0.08), transparent 70%)`
+          }}
+        />
+      </motion.div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col md:flex-row h-full items-center justify-between pt-20">
         
@@ -87,10 +109,10 @@ export default function Hero() {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 mb-16">
-              <a href="#contact" className="group border border-primary bg-background text-primary px-8 py-4 font-sans text-sm uppercase tracking-widest hover:bg-primary hover:text-black transition-colors duration-300">
+              <a href="#contact" className="group border border-primary bg-background text-primary px-8 py-4 font-sans text-sm uppercase tracking-widest hover:bg-primary hover:text-black transition-colors duration-300 btn-magnetic" aria-label="Start Planning">
                 Start Planning
               </a>
-              <a href="#portfolio" className="group relative font-sans text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              <a href="#portfolio" className="group relative font-sans text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors btn-magnetic" aria-label="View Our Work">
                 View Our Work
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
