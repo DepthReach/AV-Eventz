@@ -15,7 +15,6 @@ import Testimonials from './Testimonials';
 import FAQ from './FAQ';
 import Contact from './Contact';
 import Footer from './Footer';
-import CustomCursor from './CustomCursor';
 
 export default function LandingPage() {
   const [loading, setLoading] = useState(true);
@@ -38,8 +37,6 @@ export default function LandingPage() {
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-primary">
-      <CustomCursor />
-      
       {/* Scroll Progress */}
       <div id="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
