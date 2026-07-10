@@ -113,27 +113,65 @@
   }
 }
 
-/* Custom Cursor */
-.custom-cursor {
-  width: 12px;
-  height: 12px;
-  background-color: hsl(40 47% 55%);
+/* Custom Cursor — desktop only, respects reduced-motion */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body,
+  a, button, [role="button"],
+  input, select, textarea, label, summary,
+  [data-interactive] {
+    cursor: none !important;
+  }
+}
+
+/* Inner dot: snaps instantly to mouse */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: hsl(40 47% 55%);
   border-radius: 50%;
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease-out;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
 }
 
-.custom-cursor.hovering {
-  transform: translate(-50%, -50%) scale(3.33); /* scales to ~40px */
-  background-color: transparent;
-  border: 1px solid hsl(40 47% 55%);
+.cursor-dot--hover {
+  width: 4px;
+  height: 4px;
+  background: hsl(40 47% 75%);
 }
 
-@media (max-width: 768px) {
-  .custom-cursor {
+/* Outer ring: lags behind via RAF lerp */
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid hsl(40 47% 55% / 0.55);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.2s ease, width 0.25s cubic-bezier(0.25,0.46,0.45,0.94),
+              height 0.25s cubic-bezier(0.25,0.46,0.45,0.94),
+              border-color 0.25s ease;
+}
+
+.cursor-ring--hover {
+  width: 52px;
+  height: 52px;
+  border-color: hsl(40 47% 55% / 0.85);
+}
+
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
     display: none;
   }
 }
