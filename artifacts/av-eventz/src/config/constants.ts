@@ -1,0 +1,22 @@
+export const SITE = {
+  name: 'AV Eventz',
+  legalName: 'AV Enterprise',
+  tagline: 'Creating Experiences. Building Memories. Delivering Excellence.',
+  url: 'https://aveventz.in',
+  phone: '+91 9466227355',
+  phoneHref: 'tel:+919466227355',
+  whatsapp: 'https://wa.me/919466227355',
+  email: 'avevent@zoho.in',
+  address: 'B-07/2, HUDA Market, Opp. Nehru College, Sector-16, Faridabad, Haryana',
+  addressShort: 'Sector-16, Faridabad, Haryana',
+  mapEmbed: 'https://maps.google.com/maps?q=Sector+16+Faridabad+Haryana&output=embed',
+  hours: 'Monday – Saturday, 9:00 AM – 7:00 PM',
+  formspreeEndpoint: 'https://formspree.io/f/REPLACE_WITH_YOUR_ID',
+  social: {
+    instagram: '#',
+    facebook: '#',
+    linkedin: '#',
+    youtube: '#',
+  },
+  clients: ['INDIAN OIL', 'IDFC BANK', 'DAINIK JAGRAN', 'DAINIK BHASKAR', 'MITRA INDUSTRIES'],
+};

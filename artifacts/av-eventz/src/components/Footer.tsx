@@ -13,23 +13,40 @@ export default function Footer() {
 
         <div>
           <h3 className="font-sans text-sm uppercase tracking-widest text-foreground mb-6">Quick Links</h3>
-          <ul className="space-y-3">
-            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
-              <li key={item}>
-                <a href={`#${item.toLowerCase()}`} className="text-muted-foreground hover:text-primary text-[14px] transition-colors">
-                  {item}
-                </a>
-              </li>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            {[
+              { name: 'Home', href: '/' },
+              { name: 'About', href: '/about' },
+              { name: 'Services', href: '/services' },
+              { name: 'Portfolio', href: '/portfolio' },
+              { name: 'Gallery', href: '/gallery' },
+              { name: 'Clients', href: '/clients' },
+              { name: 'Testimonials', href: '/testimonials' },
+              { name: 'FAQ', href: '/faq' },
+              { name: 'Careers', href: '/careers' },
+              { name: 'Contact', href: '/contact' }
+            ].map((item) => (
+              <a key={item.name} href={item.href} className="text-muted-foreground hover:text-primary text-[14px] transition-colors block">
+                {item.name}
+              </a>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div>
           <h3 className="font-sans text-sm uppercase tracking-widest text-foreground mb-6">Services</h3>
           <ul className="space-y-3">
-            {['Corporate Events', 'Conferences', 'Product Launches', 'Award Nights', 'AV & Technical'].map((item) => (
-              <li key={item} className="text-muted-foreground text-[14px]">
-                {item}
+            {[
+              { name: 'Corporate Events', href: '/services/corporate-events' },
+              { name: 'Conferences', href: '/services/conferences' },
+              { name: 'Product Launches', href: '/services/product-launches' },
+              { name: 'Exhibitions', href: '/services/exhibitions' },
+              { name: 'Award Nights', href: '/services/award-nights' }
+            ].map((item) => (
+              <li key={item.name}>
+                <a href={item.href} className="text-muted-foreground hover:text-primary text-[14px] transition-colors">
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
@@ -59,10 +76,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container mx-auto text-center border-t border-white/5 pt-8">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between border-t border-white/5 pt-8 gap-4">
         <p className="text-[12px] text-muted-foreground font-sans">
           © {new Date().getFullYear()} AV Eventz — A Brand of AV Enterprise. All rights reserved.
         </p>
+        <div className="flex gap-4">
+          <a href="/privacy-policy" className="text-[12px] text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="/terms" className="text-[12px] text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
+        </div>
       </div>
     </footer>
   );

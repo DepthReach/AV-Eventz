@@ -39,16 +39,46 @@ export default function Header() {
           </div>
 
           <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors"
-              >
-                {link.name}
-                <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            <a href="/" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              Home
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
+            <a href="/about" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              About
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
+            <div className="group relative">
+              <a href="/services" className="font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors py-4">
+                Services
               </a>
-            ))}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-[#111] border border-primary/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col z-50">
+                <a href="/services/corporate-events" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Corporate Events</a>
+                <a href="/services/conferences" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Conferences</a>
+                <a href="/services/product-launches" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Product Launches</a>
+                <a href="/services/exhibitions" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Exhibitions</a>
+                <a href="/services/award-nights" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Award Nights</a>
+                <a href="/services/weddings" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Weddings</a>
+                <a href="/services/artist-management" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Artist Management</a>
+                <a href="/services/stage-production" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors border-b border-primary/10">Stage Production</a>
+                <a href="/services/photography-videography" className="px-4 py-3 font-sans text-xs uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-[#1a1a1a] transition-colors">Photography & Video</a>
+              </div>
+            </div>
+            <a href="/portfolio" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              Portfolio
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
+            <a href="/gallery" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              Gallery
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
+            <a href="/clients" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              Clients
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
+            <a href="/contact" className="group relative font-sans text-[13px] uppercase tracking-widest text-foreground hover:text-primary transition-colors">
+              Contact
+              <span className="absolute -bottom-1.5 left-1/2 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0" />
+            </a>
           </nav>
 
           <div className="hidden lg:flex items-center justify-end gap-4 flex-1">
