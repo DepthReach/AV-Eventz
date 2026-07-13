@@ -6,7 +6,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
-"allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": false,
