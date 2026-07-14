@@ -101,7 +101,7 @@ export default function Services() {
               <motion.div 
                 variants={textReveal}
                 initial="hidden"
-                whileInView="visible"
+               animate="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 className="max-w-[480px] w-full"
               >
