@@ -79,21 +79,15 @@ export default function Services() {
           <div key={idx} className={`flex flex-col ${srv.alignLeft ? 'md:flex-row-reverse' : 'md:flex-row'} w-full min-h-[500px]`}>
             {/* Image Side */}
             <div className="w-full md:w-1/2 relative h-[400px] md:h-auto overflow-hidden group">
-              <motion.div
-                variants={srv.alignLeft ? imageRevealLeft : imageReveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-                className="w-full h-full"
-              >
-                <img 
-                  src={srv.img} 
-                  alt={srv.title} 
-                  className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-[3000ms] ease-out transform group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/20" />
-              </motion.div>
+              <div className="w-full h-full relative">
+  <img
+    src={srv.img}
+    alt={srv.title}
+    className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 transition-all duration-[3000ms] ease-out transform group-hover:scale-105"
+    loading="lazy"
+  />
+  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+</div>
             </div>
 
             {/* Text Side */}
